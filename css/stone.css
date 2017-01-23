@@ -1,0 +1,120 @@
+.zol_stone {
+
+}
+.zol_stone H1 {
+	font-family: 'Century Gothic', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #494949;
+	text-transform: uppercase;
+	line-height: 36px;
+	text-align: center;
+	margin: 0 0 30px 0;
+}
+.zol_stone .filter {
+	margin-bottom: 20px;
+}
+.zol_stone .products {
+}
+.zol_stone .products .items {
+	margin-bottom: 7px;	
+}
+.zol_stone .products .item {
+	position: relative;
+	display: inline-block;
+	width: 222px;
+	height: 312px;
+	font-size: 14px;
+	text-align: center;
+	margin: 0 17px 21px 0;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-shadow: 0 0 5px rgba(0,0,0,.5);
+	-moz-box-shadow: 0 0 5px rgba(0,0,0,.5);
+	box-shadow: 0 0 5px rgba(0,0,0,.5);
+}
+.zol_stone .products .item:nth-child(4n) {
+	margin-right: 0;
+}
+.zol_stone .products .item IMG {
+	margin: 18px 0 12px 0;
+}
+.zol_stone .products .item STRONG {
+	display: block;
+}
+.zol_stone .products .item .buttons {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: none;
+	width: 222px;
+	height: 312px;
+	padding-top: 132px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	text-align: center;
+}
+.zol_stone .products .item:hover .buttons {
+	display: block;
+	background: rgba(250, 166, 53, 0.4);
+	margin: 0;
+}
+.zol_stone .products .more {
+	font-size: 21px;
+	text-align: center;
+}
+.zol_stone .products .more A {
+	position: relative;
+	color: #666;
+	text-decoration: none;
+	border-bottom: 1px dashed #666;
+}
+.zol_stone .products .more A I {
+	position: absolute;
+	top: 11px;
+	right: -10px;
+	display: inline-block;
+	width: 7px;
+	height: 4px;
+	background: no-repeat center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAcAAAAECAYAAABCxiV9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACtJREFUeNpiTEtL+8+AAzDNnDmTEZsESJwJxkCXADP+//8PxyArkPkAAQYAyk4dhqx4X/cAAAAASUVORK5CYII=');
+}
+.zol_stone .products:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.zol_stone .buttons {
+	margin-top: 40px;
+	text-align: center;
+}
+.zol_stone .tip {
+	position: relative;
+	display: inline-block;
+	vertical-align: middle;
+	width: 20px;
+	height: 20px;
+	cursor: help;
+	line-height: 20px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	color: #333;
+	background-color: #fecc00;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

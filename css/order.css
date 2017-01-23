@@ -1,0 +1,64 @@
+.zol_order {
+
+}
+.zol_order .form {
+	width: 542px;
+	margin: 0 auto;
+	background-color: #fdf8e5;
+	border: solid 1px #efebda;
+	padding: 24px;
+	margin-bottom: 20px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.zol_order H2 {
+	font-size: 21px;
+	font-weight: bold;
+	text-align: center;
+	margin-bottom: 23px;
+}
+.zol_order P {
+	text-align: center;
+	margin-bottom: 9px;
+}
+.zol_order .error {
+	color: #ca061d;
+}
+.zol_order FORM {
+	padding: 22px 0 0 0;
+}
+.zol_order .item {
+	padding: 0 0 25px 0;
+}
+.zol_order .item STRONG {
+	display: block;
+	float: left;
+	width: 110px;
+	line-height: 39px;
+	text-align: right;
+	margin-right: 8px;
+}
+.zol_order .item INPUT[type="text"] {
+	width: 360px;
+	height: 39px;
+	background-color: white;
+	border: 1px solid #aaa;
+	padding: 0 10px;
+	border-radius: 3px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.zol_order .item.short INPUT[type="text"] {
+	width: 246px;
+}
+.zol_order .item:after { content: "."; display: block; height: 0; clear: both; visibility: hidden; }
+.zol_order .buttons { 
+	text-align: center;
+}
+
+

@@ -1,0 +1,83 @@
+.zol_main {
+	margin-bottom: 37px;
+}
+.zol_main H1 {
+	font-family: 'Century Gothic', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #494949;
+	text-transform: uppercase;
+	line-height: 36px;
+	text-align: center;
+	margin: 0 0 78px 0;
+}
+.zol_main .menu {
+	text-align: center;
+}
+.zol_main .menu UL {
+	margin-top: 26px;
+	font-family: 'Century Gothic', sans-serif;
+	font-size: 25px;
+	font-weight: bold;
+	color: #ca061d;
+}
+.zol_main .menu UL LI {
+	display: inline-block;
+	width: 305px;
+	height: 150px;
+	line-height: 150px;
+	-webkit-box-shadow: 0 0 10px rgba(0,0,0,.15);
+	-moz-box-shadow: 0 0 10px rgba(0,0,0,.15);
+	box-shadow: 0 0 10px rgba(0,0,0,.15);
+	background-image: -webkit-linear-gradient(bottom, #f7f7f6, #fff);
+	background-image: -moz-linear-gradient(bottom, #f7f7f6, #fff);
+	background-image: -o-linear-gradient(bottom, #f7f7f6, #fff);
+	background-image: -ms-linear-gradient(bottom, #f7f7f6, #fff);
+	background-image: linear-gradient(to top, #f7f7f6, #fff);
+	text-align: left;
+	margin-left: 10px;
+}
+.zol_main .menu UL LI:first-child {
+	margin-left: 0;
+}
+.zol_main .menu UL LI.basis {
+	background: url('../images/menu1.png') no-repeat #fff;
+}
+.zol_main .menu UL LI.price {
+	background: url('../images/menu2.png') no-repeat #fff;
+}
+.zol_main .menu UL LI.stone {
+	background: url('../images/menu3.png') no-repeat #fff;
+}
+.zol_main .menu UL LI A {
+	text-decoration: none;
+	text-transform: uppercase;
+	padding-left: 20px;
+	color: #ca061d;
+}
+.zol_main .banners {
+	margin-top: 92px;
+	text-align: center;
+}
+.zol_main .banners .banner {
+	display: inline-block;
+	width: 466px;
+	height: 170px;
+	margin-left: 10px;
+	border: solid 1px #ccc;
+}
+.zol_main .banners .banner:first-child {
+	margin-left: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+

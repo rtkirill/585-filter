@@ -1,0 +1,33 @@
+@charset "utf-8";
+
+
+.zol_button {
+	display: inline-block;
+	width: 145px;
+	height: 37px;
+	line-height: 39px;
+	font-family: 'Arial', sans-serif;
+	font-size: 13px;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	border: none;
+	color: #333;
+}
+.zol_button.red {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #ca061d;
+	color: #fff;
+}
+.zol_button.yellow {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	background-color: #fecc00;
+	color: #333;
+}
+.zol_button.red.larr {
+	background: #ca061d no-repeat 21px center url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAALCAYAAABcUvyWAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAD9JREFUeNpi/P//PwMW8J8JmyAQMzJhEwQxmLAJIkugCMIkMARhEoxQSQwJBmySyJajSKI7Fy6JzYNgSYAAAwAKPQ4Sr/3rhAAAAABJRU5ErkJggg==');
+}

@@ -1,0 +1,16 @@
+@charset "utf-8";
+
+B1ODY { background: url('photos/585k_карточка-товара_20161121.png') no-repeat center top; opacity: 0.5; }
+B1ODY { background: url('photos/585k_камень_20161118.png') no-repeat center top; opacity: 0.5; }
+B1ODY { background: url('photos/585k_список_изделий_20161118.png') no-repeat center top; opacity: 0.5; }
+B1ODY { background: url('photos/585k_основа_20161119.png') no-repeat center top; opacity: 0.5; }
+B1ODY { background: url('photos/585k_главная_20161117.png') no-repeat center top; opacity: 0.5; }
+
+BODY {
+	font-family: 'Arial', sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	color: #333;
+	line-height: normal;
+}
+

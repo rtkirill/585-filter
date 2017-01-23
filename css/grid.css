@@ -1,0 +1,40 @@
+@charset "utf-8";
+
+/* Grids */
+.container {
+	margin: 0 auto;
+	width: 100%;
+}
+.container:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.container > .column {
+	float: left;
+	margin-left: 20px;
+	o1verflow: hidden;
+	width: 61px;
+	/* temp */
+	m1in-height: 100px;
+	b1ackground: green;
+}
+.container > .column:first-child {
+	margin-left: 0;
+}
+.container .span-1 { width: 61px; }
+.container .span-2 { width: 142px; }
+.container .span-3 { width: 223px; }                                                     
+.container .span-4 { width: 304px; }
+.container .span-5 { width: 385px; }
+.container .span-6 { width: 466px; }
+.container .span-7 { width: 547px; }
+.container .span-8 { width: 628px; }
+.container .span-9 { width: 709px; }
+.container .span-10 { width: 790px; }
+.container .span-11 { width: 871px; }
+.container .span-12 { width: 952px; }
+
+

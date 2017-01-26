@@ -126,17 +126,30 @@ $(document).ready(function () {
     $(document).on('change', '.bx_filter_checkbox_wrapper input[type="checkbox"]', function () {
         $('.color_select').empty();
         $('.design_select').empty();
-        $.getJSON('/color1.json', function (data) {
-            $.each(data, function (key, val) {
-                $('.color_select').append('<option value="">------</option>');
-                $('.color_select').append('<option value="' + key + '">' + val + '</option>');
+        if ($(this).prop("checked")) {
+            $.getJSON('/color1.json', function (data) {
+                $.each(data, function (key, val) {
+                    $('.color_select').append('<option value="">------</option>');
+                    $('.color_select').append('<option value="' + key + '">' + val + '</option>');
+                });
             });
-        });
-        $.getJSON('/design1.json', function (data) {
-            $.each(data, function (key, val) {
-                $('.design_select').append('<option value="">------</option>');
-                $('.design_select').append('<option value="' + key + '">' + val + '</option>');
+            $.getJSON('/design1.json', function (data) {
+                $.each(data, function (key, val) {
+                    $('.design_select').append('<option value="">------</option>');
+                    $('.design_select').append('<option value="' + key + '">' + val + '</option>');
+                });
             });
-        });
+        } else {
+            $.getJSON('/color.json', function (data) {
+                $.each(data, function (key, val) {
+                    $('.color_select').append('<option value="' + key + '">' + val + '</option>');
+                });
+            });
+            $.getJSON('/design.json', function (data) {
+                $.each(data, function (key, val) {
+                    $('.design_select').append('<option value="' + key + '">' + val + '</option>');
+                });
+            });
+        }
     });
 });

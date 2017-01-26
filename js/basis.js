@@ -9,7 +9,7 @@ $(document).ready(function () {
         }
     });
 
-
+    //Get options from JSONs
     $(function () {
         $.getJSON('/color.json', function (data) {
             $.each(data, function (key, val) {
@@ -30,14 +30,36 @@ $(document).ready(function () {
             }
         });
     });
+    //    Initilizaiting select2
     $('.color_select').select2({
         minimumResultsForSearch: Infinity
     });
     $('.design_select').select2({
         minimumResultsForSearch: Infinity
     });
+    //    UI slider
+    $(function () {
+        var options = [2, 2.5, 3, 4, 6.5]
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: options.length - 1,
+            values: [0, 5],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - $" + $("#slider-range").slider("values", 1));
+    });
+    //    Options for UI slider
+    $.getJSON('/slider-options.json', function (data) {
+        $.each(data, function (key,val) {
+            $('.slider_options').append('<span>' + val + '</span>');
+        });
+    });
 
-
+    //Amend select2 options after select
     $('.color_select').on('change', function () {
         $('.design_select').empty();
         $('.bx_filter_checkbox_wrapper').empty();

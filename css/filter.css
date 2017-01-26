@@ -49,6 +49,7 @@
     border-radius: 100px!important;
     border: 0!important;
     background: #c41f1f!important;
+    cursor: pointer!important;
 }
 
 .bx_filter .ui-slider-handle:nth-child(2) {

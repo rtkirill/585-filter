@@ -73,5 +73,20 @@
     display: flex;
     justify-content: space-between;
     margin-top: 3px;
+    margin-bottom: 40px;
+}
+
+.bx_filter .slider_button {
+    text-align: center;
+    height: 35px;
     margin-bottom: 50px;
+}
+
+.bx_filter .slider_button button {
+    cursor: pointer;
+    border: 0;
+    background: #c41f1f;
+    color: #fff;
+    font-size: 15px;
+    padding: 5px 10px;
 }

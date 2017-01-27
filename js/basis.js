@@ -38,8 +38,8 @@ $(document).ready(function () {
         minimumResultsForSearch: Infinity
     });
     //    UI slider with CHANGE other filtre's options
+    var options = [2, 2.5, 3, 4, 6.5]; //options for slider
     $(function () {
-        var options = [2, 2.5, 3, 4, 6.5]
         $("#slider-range").slider({
             range: true,
             min: 0,
@@ -85,10 +85,11 @@ $(document).ready(function () {
         });
     });
 
-    //Change design and size filtre's options
+    //Change design, size and slider filtre's options
     $('.color_select').on('change', function () {
         $('.design_select').empty();
         $('.bx_filter_checkbox_wrapper').empty();
+        $("#slider-range").slider("destroy");
         $.getJSON('/design1.json', function (data) {
             $.each(data, function (key, val) {
                 $('.design_select').append('<option value="">------</option>');
@@ -103,11 +104,21 @@ $(document).ready(function () {
                 $('.bx_filter_checkbox_wrapper').append('<span>' + _values.text + '</span>');
             }
         });
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: options.length - 1,
+            values: [1, 2],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
     });
-    //Change color and size filtre's options
+    //Change color, size and slider filtre's options
     $('.design_select').on('change', function () {
         $('.color_select').empty();
         $('.bx_filter_checkbox_wrapper').empty();
+        $("#slider-range").slider("destroy");
         $.getJSON('/color1.json', function (data) {
             $.each(data, function (key, val) {
                 $('.color_select').append('<option value="">------</option>');
@@ -121,11 +132,21 @@ $(document).ready(function () {
                 $('.bx_filter_checkbox_wrapper').append('<span>' + _values.text + '</span>');
             }
         });
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: options.length - 1,
+            values: [0, 3],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
     });
-    //Change color and design filtre's options
+    //Change color, design and slider filtre's options
     $(document).on('change', '.bx_filter_checkbox_wrapper input[type="checkbox"]', function () {
         $('.color_select').empty();
         $('.design_select').empty();
+        $("#slider-range").slider("destroy");
         if ($(this).prop("checked")) {
             $.getJSON('/color1.json', function (data) {
                 $.each(data, function (key, val) {
@@ -139,6 +160,15 @@ $(document).ready(function () {
                     $('.design_select').append('<option value="' + key + '">' + val + '</option>');
                 });
             });
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: options.length - 1,
+                values: [1, 2],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
         } else {
             $.getJSON('/color.json', function (data) {
                 $.each(data, function (key, val) {
@@ -149,6 +179,15 @@ $(document).ready(function () {
                 $.each(data, function (key, val) {
                     $('.design_select').append('<option value="' + key + '">' + val + '</option>');
                 });
+            });
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: options.length - 1,
+                values: [0, 5],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
             });
         }
     });

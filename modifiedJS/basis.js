@@ -72,6 +72,7 @@ $(document).ready(function () {
                         $('.bx_filter_checkbox_wrapper').append('<span>' + _values.text + '</span>');
                     }
                 });
+                $("#show_button").fadeIn(300);
             }
         });
         $("#amount").val("$" + $("#slider-range").slider("values", 0) +
@@ -113,6 +114,7 @@ $(document).ready(function () {
                 $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
+        $("#show_button").fadeIn(300);
     });
     //Change color, size and slider filtre's options
     $('.design_select').on('change', function () {
@@ -141,6 +143,7 @@ $(document).ready(function () {
                 $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
             }
         });
+        $("#show_button").fadeIn(300);
     });
     //Change color, design and slider filtre's options
     $(document).on('change', '.bx_filter_checkbox_wrapper input[type="checkbox"]', function () {
@@ -169,6 +172,7 @@ $(document).ready(function () {
                     $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
                 }
             });
+            $("#show_button").fadeIn(300);
         } else {
             $.getJSON('/bitrix/templates/zolotoy/ajax/color.json', function (data) {
                 $.each(data, function (key, val) {
@@ -191,11 +195,8 @@ $(document).ready(function () {
             });
         }
     });
-
-    //Serialize
-    $("#bx_filter_form").on("submit", function (event) {
+    $("form").on("submit", function (event) {
         event.preventDefault();
         console.log($(this).serialize());
     });
-
 });

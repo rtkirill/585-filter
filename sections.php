@@ -148,6 +148,9 @@ if ($arParams['USE_FILTER'] == 'Y')
                                     </div>
                                     <div id="slider-range"></div>
                                     <div class="slider_options"></div>
+                                    <div class="slider_button">
+                                        <button type="submit" id="show_button" style="display:none">Показать</button>
+                                    </div>
                                 </div>
                             </div>
 			</form>

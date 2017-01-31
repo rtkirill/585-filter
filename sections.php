@@ -151,6 +151,10 @@ if ($arParams['USE_FILTER'] == 'Y')
                                     <div class="slider_button">
                                         <button type="submit" id="show_button" style="display:none">Показать</button>
                                     </div>
+                                    <input type="hidden" name="color" id="colorval">
+                                    <input type="hidden" name="design" id="designval">
+<!--                                    <input type="hidden" name="handle1" id="sliderval1">-->
+<!--                                    <input type="hidden" name="handle2" id="sliderval2">-->
                                 </div>
                             </div>
 			</form>

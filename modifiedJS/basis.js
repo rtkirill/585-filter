@@ -9,10 +9,10 @@ $(document).ready(function () {
         }
     });
 
+    $("#bx_filter_form").serialize();
+    
     //Get options for color, design, size selects from JSONs
     //    var size_option = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
-
-
     $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', function (data) {
         $('.color_select').append('<option value="">------</option>');
         $.each(data, function (key, val) {
@@ -101,6 +101,7 @@ $(document).ready(function () {
     $('.color_select').on('change', function () {
         var color_option = $('.color_select option:selected').val();
         $('#colorval').val(color_option);
+        $("#bx_filter_form").serialize();
         var dval = $('.design_select option:selected').val();
         //        var sval = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
         $('.design_select').empty();
@@ -142,6 +143,7 @@ $(document).ready(function () {
     $('.design_select').on('change', function () {
         var design_option = $('.design_select option:selected').val();
         $('#designval').val(design_option);
+        $("#bx_filter_form").serialize();
         var cval = $('.color_select option:selected').val();
         $('.color_select').empty();
         //        $("#slider-range").slider("destroy");
@@ -180,6 +182,7 @@ $(document).ready(function () {
     $(document).on('change', '.bx_filter_checkbox_wrapper input[type="checkbox"]', function () {
         var size_option = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
         $('#sizeval').val(size_option);
+        $("#bx_filter_form").serialize();
         var dval = $('.design_select option:selected').val();
         var cval = $('.color_select option:selected').val();
         $('.color_select').empty();
@@ -229,5 +232,5 @@ $(document).ready(function () {
             //                values: [1, options.length-1]
             //            });
         }
-    });
+    });    
 });

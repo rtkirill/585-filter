@@ -25,6 +25,7 @@
 
 .bx_filter .bx_filter_design {
     float: right;
+    text-align: right;
 }
 
 .bx_filter .bx_filter_checkbox input {

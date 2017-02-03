@@ -18,6 +18,35 @@ $APPLICATION->SetTitle("Выберите основу");
 $APPLICATION->SetAdditionalCSS("/bitrix/templates/zolotoy/components/sitebuild/catalog/basis/filter.css");
 $APPLICATION->AddHeadScript("/bitrix/templates/zolotoy/components/sitebuild/catalog/basis/basis.js");
 
+global ${$arParams["FILTER_NAME"]};
+
+$design = $_REQUEST["design"];
+if(!is_array($design))
+{
+	$design = array($design);
+}
+
+$size = $_REQUEST["size"];
+if(!is_array($size))
+{
+	$size = array($size);
+}
+
+$color = $_REQUEST["color"];
+if(!is_array($color))
+{
+	$color = array($color);
+}
+
+if(!empty($design))
+ ${$arParams["FILTER_NAME"]}["PROPERTY_DESIGN"] = $design;
+
+if(!empty($size))
+ ${$arParams["FILTER_NAME"]}["PROPERTY_SIZE"] = $size;
+
+if(!empty($color))
+ ${$arParams["FILTER_NAME"]}["PROPERTY_GOLD_COLOR"] = $color;
+ 
 $this->setFrameMode(true);
 ?>
 <div class="column span-12 zol_basis">
@@ -130,12 +159,12 @@ if ($arParams['USE_FILTER'] == 'Y')
                                     <div class="bx_filter_color">
                                         Цвет золота
                                         <a href="javascript:void(0)" class="tip">?</a>
-                                        <select class="color_select"></select>
+                                        <select class="color_select" data-val="<?=implode(",",$color)?>"></select>
                                     </div>
                                     <div class="bx_filter_design">
                                         Дизайн
                                         <a href="javascript:void(0)" class="tip">?</a>
-                                        <select class="design_select"></select>
+                                        <select class="design_select" data-val="<?=implode(",",$design)?>"></select>
                                     </div>
                                     <div class="bx_filter_size">
                                         <span class="bx_filter_size_title">
@@ -143,7 +172,7 @@ if ($arParams['USE_FILTER'] == 'Y')
                                             <a href="javascript:void(0)" class="tip">?</a>
                                         </span>
                                         <div class="bx_filter_checkbox">
-                                            <div class="bx_filter_checkbox_wrapper"></div>
+                                            <div class="bx_filter_checkbox_wrapper" data-val="<?=implode(",",$size)?>"></div>
                                         </div>
                                     </div>
                                     <div id="slider-range"></div>
@@ -165,40 +194,6 @@ if ($arParams['USE_FILTER'] == 'Y')
 }
 ?>
 <?
-global ${$arParams["FILTER_NAME"]};
-
-$design = $_REQUEST["design"];
-$design = 2; //Temp
-if(!is_array($design))
-{
-	$design = array($design);
-}
-
-$size = $_REQUEST["size"];
-$size = 31; //Temp
-if(!is_array($size))
-{
-	$size = array($size);
-}
-
-$color = $_REQUEST["color"];
-$color = 19; //Temp
-if(!is_array($color))
-{
-	$color = array($color);
-}
-
-if(!empty($design))
- ${$arParams["FILTER_NAME"]}["PROPERTY_DESIGN"] = $design;
-
-if(!empty($size))
- ${$arParams["FILTER_NAME"]}["PROPERTY_SIZE"] = $size;
-
-if(!empty($color))
- ${$arParams["FILTER_NAME"]}["PROPERTY_GOLD_COLOR"] = $color;
- 
-var_dump(${$arParams["FILTER_NAME"]});
-
 $intSectionID = 0;
 ?>
 		<div class="column span-12 products">

@@ -9,32 +9,70 @@ $(document).ready(function () {
         }
     });
 
-    $("#bx_filter_form").serialize();
-    
     //Get options for color, design, size selects from JSONs
     //    var size_option = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
-    $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', function (data) {
+    
+    var old_val_c = [];
+    if ($('.color_select').attr('data-val').length) {
+        old_val_c = $('.color_select').attr('data-val').split(",");
+        $('.color_select').attr('data-val', '');
+    }
+    if (old_val_c.length) {
+        for (var i = 0; i < old_val_c.length; i++) {
+            $('#bx_filter_form').append('<input type="hidden" name="color" value="' + old_val_c[i] + '" class="color_old" \>');
+        }
+    }
+    $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', $("#bx_filter_form").serialize(), function (data) {
         $('.color_select').append('<option value="">------</option>');
         $.each(data, function (key, val) {
-            $('.color_select').append('<option value="' + val.ID + '">' + val.NAME + '</option>');
+            $('.color_select').append('<option' + (val.ID == old_val_c ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
             var color_option = $('.color_select option:selected').val();
             $('#colorval').val(color_option);
         });
+        $('#bx_filter_form .color_old').remove();
     });
-    $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', function (data) {
+    
+    var old_val_d = [];
+    if ($('.design_select').attr('data-val').length) {
+        old_val_d = $('.design_select').attr('data-val').split(",");
+        $('.design_select').attr('data-val', '');
+    }
+    if (old_val_d.length) {
+        for (var i = 0; i < old_val_d.length; i++) {
+            $('#bx_filter_form').append('<input type="hidden" name="design" value="' + old_val_d[i] + '" class="design_old" \>');
+        }
+    }
+    $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', $("#bx_filter_form").serialize(), function (data) {
         $('.design_select').append('<option value="">------</option>');
         $.each(data, function (key, val) {
-            $('.design_select').append('<option value="' + val.ID + '">' + val.NAME + '</option>');
+            $('.design_select').append('<option' + (val.ID == old_val_d ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
             var design_option = $('.design_select option:selected').val();
             $('#designval').val(design_option);
         });
+        $('#bx_filter_form .design_old').remove();
     });
-    $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', function (data) {
+    
+    var old_val_s = [];
+    if ($('.bx_filter_checkbox_wrapper').attr('data-val').length) {
+        old_val_s = $('.bx_filter_checkbox_wrapper').attr('data-val').split(",");
+        $('.bx_filter_checkbox_wrapper').attr('data-val', '');
+    }
+    if (old_val_s.length) {
+        for (var i = 0; i < old_val_s.length; i++) {
+            $('#bx_filter_form').append('<input type="hidden" name="size" value="' + old_val_s[i] + '" class="size_old" \>');
+        }
+    }
+    $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', $("#bx_filter_form").serialize(), function (data) {
+        $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').each(function () {
+            old_val_s.push($(this).val());
+        });
+        console.log(old_val_s);
         for (var i = 0; i < data.length; i++) {
             var _values = data[i];
-            $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size" value="' + _values.ID + '">');
+            $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size"' + ((old_val_s.indexOf(_values.ID) != -1) ? ' checked ' : '') + 'value="' + _values.ID + '">');
             $('.bx_filter_checkbox_wrapper').append('<span>' + _values.NAME + '</span>');
         }
+        $('#bx_filter_form .size_old').remove();
     });
 
     //    Initilizaiting select2
@@ -101,19 +139,18 @@ $(document).ready(function () {
     $('.color_select').on('change', function () {
         var color_option = $('.color_select option:selected').val();
         $('#colorval').val(color_option);
-        $("#bx_filter_form").serialize();
         var dval = $('.design_select option:selected').val();
         //        var sval = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
         $('.design_select').empty();
         //        $("#slider-range").slider("destroy");
-        $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', function (data) {
+        $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', $("#bx_filter_form").serialize(), function (data) {
             $('.design_select').append('<option value="">------</option>');
             $.each(data, function (key, val) {
                 $('.design_select').append('<option' + (val.ID == dval ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
                 //$('.design_select').append('<option value="' + key + '">' + val + '</option>');
             });
         });
-        $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', function (data) {
+        $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', $("#bx_filter_form").serialize(), function (data) {
             var sval = [];
             $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').each(function () {
                 sval.push($(this).val());
@@ -143,17 +180,16 @@ $(document).ready(function () {
     $('.design_select').on('change', function () {
         var design_option = $('.design_select option:selected').val();
         $('#designval').val(design_option);
-        $("#bx_filter_form").serialize();
         var cval = $('.color_select option:selected').val();
         $('.color_select').empty();
         //        $("#slider-range").slider("destroy");
-        $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', function (data) {
+        $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', $("#bx_filter_form").serialize(), function (data) {
             $('.color_select').append('<option value="">------</option>');
             $.each(data, function (key, val) {
                 $('.color_select').append('<option' + (val.ID == cval ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
             });
         });
-        $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', function (data) {
+        $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', $("#bx_filter_form").serialize(), function (data) {
             var sval = [];
             $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').each(function () {
                 sval.push($(this).val());
@@ -180,22 +216,19 @@ $(document).ready(function () {
     });
     //Change color, design and slider filtre's options
     $(document).on('change', '.bx_filter_checkbox_wrapper input[type="checkbox"]', function () {
-        var size_option = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
-        $('#sizeval').val(size_option);
-        $("#bx_filter_form").serialize();
         var dval = $('.design_select option:selected').val();
         var cval = $('.color_select option:selected').val();
         $('.color_select').empty();
         $('.design_select').empty();
         //        $("#slider-range").slider("destroy");
         if ($(this).prop("checked")) {
-            $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', function (data) {
+            $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', $("#bx_filter_form").serialize(), function (data) {
                 $('.color_select').append('<option value="">------</option>');
                 $.each(data, function (key, val) {
                     $('.color_select').append('<option' + (val.ID == cval ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
                 });
             });
-            $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', function (data) {
+            $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', $("#bx_filter_form").serialize(), function (data) {
                 $('.design_select').append('<option value="">------</option>');
                 $.each(data, function (key, val) {
                     $('.design_select').append('<option' + (val.ID == dval ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
@@ -213,13 +246,13 @@ $(document).ready(function () {
             //            $('#sliderval2').val(options[op2]);
             $("#show_button").fadeIn(300);
         } else {
-            $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', function (data) {
+            $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', $("#bx_filter_form").serialize(), function (data) {
                 $('.color_select').append('<option value="">------</option>');
                 $.each(data, function (key, val) {
                     $('.color_select').append('<option' + (val.ID == cval ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
                 });
             });
-            $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', function (data) {
+            $.getJSON('/bitrix/templates/zolotoy/ajax/design.php', $("#bx_filter_form").serialize(), function (data) {
                 $('.design_select').append('<option value="">------</option>');
                 $.each(data, function (key, val) {
                     $('.design_select').append('<option' + (val.ID == dval ? ' selected' : '') + ' value="' + val.ID + '">' + val.NAME + '</option>');
@@ -232,5 +265,5 @@ $(document).ready(function () {
             //                values: [1, options.length-1]
             //            });
         }
-    });    
+    });
 });

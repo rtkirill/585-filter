@@ -11,7 +11,6 @@ $(document).ready(function () {
 
     //Get options for color, design, size selects from JSONs
     //    var size_option = $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').val();
-    
     var old_val_c = [];
     if ($('.color_select').attr('data-val').length) {
         old_val_c = $('.color_select').attr('data-val').split(",");
@@ -31,7 +30,7 @@ $(document).ready(function () {
         });
         $('#bx_filter_form .color_old').remove();
     });
-    
+
     var old_val_d = [];
     if ($('.design_select').attr('data-val').length) {
         old_val_d = $('.design_select').attr('data-val').split(",");
@@ -51,7 +50,7 @@ $(document).ready(function () {
         });
         $('#bx_filter_form .design_old').remove();
     });
-    
+
     var old_val_s = [];
     if ($('.bx_filter_checkbox_wrapper').attr('data-val').length) {
         old_val_s = $('.bx_filter_checkbox_wrapper').attr('data-val').split(",");
@@ -63,17 +62,15 @@ $(document).ready(function () {
         }
     }
     $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', $("#bx_filter_form").serialize(), function (data) {
-        $('.bx_filter_checkbox_wrapper input[type="checkbox"]:checked').each(function () {
-            old_val_s.push($(this).val());
-        });
-        console.log(old_val_s);
         for (var i = 0; i < data.length; i++) {
             var _values = data[i];
             $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size"' + ((old_val_s.indexOf(_values.ID) != -1) ? ' checked ' : '') + 'value="' + _values.ID + '">');
             $('.bx_filter_checkbox_wrapper').append('<span>' + _values.NAME + '</span>');
+            $('.bx_filter_checkbox_wrapper>input, .bx_filter_checkbox_wrapper>span').wrapAll("<div class='checkbox_wrapper'>");
         }
         $('#bx_filter_form .size_old').remove();
     });
+//    console.log(old_val_s);
 
     //    Initilizaiting select2
     $('.color_select').select2({
@@ -160,6 +157,7 @@ $(document).ready(function () {
                 var _values = data[i];
                 $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size"' + ((sval.indexOf(_values.ID) != -1) ? ' checked ' : '') + 'value="' + _values.ID + '">');
                 $('.bx_filter_checkbox_wrapper').append('<span>' + _values.NAME + '</span>');
+                $('.bx_filter_checkbox_wrapper>input, .bx_filter_checkbox_wrapper>span').wrapAll("<div class='checkbox_wrapper'>");
             }
         });
 
@@ -199,6 +197,7 @@ $(document).ready(function () {
                 var _values = data[i];
                 $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size"' + ((sval.indexOf(_values.ID) != -1) ? ' checked ' : '') + 'value="' + _values.ID + '">');
                 $('.bx_filter_checkbox_wrapper').append('<span>' + _values.NAME + '</span>');
+                $('.bx_filter_checkbox_wrapper>input, .bx_filter_checkbox_wrapper>span').wrapAll("<div class='checkbox_wrapper'>");
             }
 
         });
@@ -222,6 +221,8 @@ $(document).ready(function () {
         $('.design_select').empty();
         //        $("#slider-range").slider("destroy");
         if ($(this).prop("checked")) {
+//            old_val_s.push($(this).val());
+            console.log(old_val_s);
             $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', $("#bx_filter_form").serialize(), function (data) {
                 $('.color_select').append('<option value="">------</option>');
                 $.each(data, function (key, val) {

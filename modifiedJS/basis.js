@@ -58,13 +58,13 @@ $(document).ready(function () {
     }
     if (old_val_s.length) {
         for (var i = 0; i < old_val_s.length; i++) {
-            $('#bx_filter_form').append('<input type="hidden" name="size" value="' + old_val_s[i] + '" class="size_old" \>');
+            $('#bx_filter_form').append('<input type="hidden" name="size[]" value="' + old_val_s[i] + '" class="size_old" \>');
         }
     }
     $.getJSON('/bitrix/templates/zolotoy/ajax/sizes.php', $("#bx_filter_form").serialize(), function (data) {
         for (var i = 0; i < data.length; i++) {
             var _values = data[i];
-            $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size"' + ((old_val_s.indexOf(_values.ID) != -1) ? ' checked ' : '') + 'value="' + _values.ID + '">');
+            $('.bx_filter_checkbox_wrapper').append('<input type="checkbox" name="size[]"' + ((old_val_s.indexOf(_values.ID) != -1) ? ' checked ' : '') + 'value="' + _values.ID + '">');
             $('.bx_filter_checkbox_wrapper').append('<span>' + _values.NAME + '</span>');
             $('.bx_filter_checkbox_wrapper>input, .bx_filter_checkbox_wrapper>span').wrapAll("<div class='checkbox_wrapper'>");
         }
@@ -221,8 +221,6 @@ $(document).ready(function () {
         $('.design_select').empty();
         //        $("#slider-range").slider("destroy");
         if ($(this).prop("checked")) {
-//            old_val_s.push($(this).val());
-            console.log(old_val_s);
             $.getJSON('/bitrix/templates/zolotoy/ajax/colors.php', $("#bx_filter_form").serialize(), function (data) {
                 $('.color_select').append('<option value="">------</option>');
                 $.each(data, function (key, val) {
